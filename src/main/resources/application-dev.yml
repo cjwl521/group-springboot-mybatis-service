@@ -1,0 +1,33 @@
+server:
+  port: 9098
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/mybatis
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    druid:
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      test-on-borrow: true
+      stat-view-servlet: true
+  mvc:
+    view:
+      prefix: /templates/
+      suffix: .ftl
+  freemarker:
+    cache: false
+    request-context-attribute: request
+
+mybatis:
+  type-aliases-package: com.chinasoft.mybatis.model
+  mapper-locations: classpath:mapper/*.xml
+mapper:
+  mappers: com.chinasoft.mybatis.util.MyMapper
+  not-empty: false
+  identity: MYSQL
+logging:
+  file: applog/logs/group-springboot-mybatis-service.txt
+  level:
+    root: INFO
